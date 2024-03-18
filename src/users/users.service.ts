@@ -7,27 +7,27 @@ export class UsersService {
   constructor(private readonly dbService: DbService) {}
 
   async create(createUserDto: Prisma.UserCreateInput) {
-    return this.dbService.object.create({ data: createUserDto });
+    return this.dbService.user.create({ data: createUserDto });
   }
 
   findAll() {
-    return this.dbService.object.findMany({});
+    return this.dbService.user.findMany({});
   }
 
-  findOne(id: number) {
-    return this.dbService.object.findUnique({ where: { id } });
+  findOne(uid: string) {
+    return this.dbService.user.findUnique({ where: { uid } });
   }
 
-  update(id: number, updateUserDto: Prisma.UserUpdateInput) {
-    return this.dbService.object.update({
+  update(uid: string, updateUserDto: Prisma.UserUpdateInput) {
+    return this.dbService.user.update({
       where: {
-        id,
+        uid,
       },
       data: updateUserDto,
     });
   }
 
-  remove(id: number) {
-    return this.dbService.object.delete({ where: { id } });
+  remove(uid: string) {
+    return this.dbService.user.delete({ where: { uid } });
   }
 }
