@@ -27,3 +27,17 @@ enum State {
   STATE2
 }
 
+model User {
+  uid String @default(uuid()) @id
+  username String    
+  pet Pet?
+}
+
+model Pet {
+  pid String @default(uuid()) @id
+  name String
+  owner User @relation(fields: [ownerId], references: [uid])
+  ownerId String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
