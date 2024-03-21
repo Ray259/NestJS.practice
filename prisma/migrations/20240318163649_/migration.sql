@@ -2,7 +2,6 @@
 CREATE TABLE "User" (
     "uid" TEXT NOT NULL,
     "username" TEXT NOT NULL,
-
     CONSTRAINT "User_pkey" PRIMARY KEY ("uid")
 );
 
